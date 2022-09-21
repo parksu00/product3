@@ -57,9 +57,11 @@ public class UploadFileDAOImpl implements UploadFileDAO{
         pstmt.setString(4, uploadFile.getUploadFileName());
         pstmt.setString(5, uploadFile.getFsize());
         pstmt.setString(6, uploadFile.getFtype());
+
         return pstmt;
       }
     },keyHolder);
+
 
     return Long.valueOf(keyHolder.getKeys().get("uploadfile_id").toString());
   }
@@ -127,8 +129,8 @@ public class UploadFileDAOImpl implements UploadFileDAO{
     sql.append(" WHERE CODE = ?  ");
     sql.append("   AND RID = ?  ");
 
-    //db table의 컬럼명(snake case) => java객체(camel case)로 자동변환
     List<UploadFile> list = jdbcTemplate.query(sql.toString(),
+        // db table의 컬럼명(snake case) => java 객체(camel case)로 자동 변환
         new BeanPropertyRowMapper<>(UploadFile.class), code, rid);
     log.info("list={}",list);
     return list;
@@ -142,9 +144,8 @@ public class UploadFileDAOImpl implements UploadFileDAO{
     sql.append("  from uploadfile ");
     sql.append(" where uploadfile_id = ? ");
 
-    UploadFile uploadFile = null;
     try {
-      uploadFile = jdbcTemplate.queryForObject(
+      UploadFile uploadFile =  uploadFile = jdbcTemplate.queryForObject(
           sql.toString(),
           new BeanPropertyRowMapper<>(UploadFile.class),
           uploadfileId);

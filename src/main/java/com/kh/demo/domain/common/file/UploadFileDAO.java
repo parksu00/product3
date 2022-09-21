@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Optional;
 
 public interface UploadFileDAO {
-
   /**
    * 업로드 파일 등록 - 단건
    * @param uploadFile
@@ -27,7 +26,7 @@ public interface UploadFileDAO {
   List<UploadFile> getFilesByCodeWithRid(String code,Long rid);
 
   /**
-   * 첨부파일조회 단건 여러건
+   * 업로드파일조회 단건
    * @param uploadfileId
    * @return
    */
