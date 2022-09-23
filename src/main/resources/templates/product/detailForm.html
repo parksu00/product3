@@ -11,6 +11,7 @@
       display:grid;
       grid-template-column: 100px 300px;
     }
+
   </style>
 </head>
 
@@ -34,18 +35,17 @@
     <button type="button" id="deleteBtn">삭제</button>
     <button type="button" id="listBtn">목록</button>
   </div>
-
   <div th:if="${form.attachFile}">
-    <a href="http://localhost:9080/attach/file/P0101/21"
-       th:href="@{/attach/file/{attachCode}/{fid}(attachCode=${form.attachFile.code},fid=${form.attachFile.uploadfileId})}"
-    th:text="${form.attachFile.uploadFilename}">상품설명</a>
-    <!--th:text="|${form.attachFile.uploadFilename}(${form.attachFile.fsize})(${form.attachFile.ftype})|"-->
+    <a href="http://localhost:9080/attach/file/P0101/34"
+       th:href="@{/api/attach/file/{attachCode}/{fid}(attachCode=${form.attachFile.code},fid=${form.attachFile.uploadfileId})}"
+       th:text="${form.attachFile.uploadFilename}">상품설명</a>
+    <!--       th:text="|${form.attachFile.uploadFilename}(${form.attachFile.fsize})(${form.attachFile.ftype})|">상품설명</a>-->
   </div>
   <div th:if="${form.imageFiles}">
-    <div th:each="imgFile :${form.imageFiles}">
-    <img width="100px" src="http://localhost:9080/attach/img/P0102/455f21b4-40a9-43d5-9179-d2e8dcf73895.png"
-    th:src="@{/attach/img/{attachCode}/{storeFilename}(attachCode=${imgFile.code},storeFilename=${imgFile.storeFilename})}"
-         alt ="이미지를 불러올 수 없습니다.">
+    <div th:each="imageFile : ${form.imageFiles}">
+      <img width="50px" src="http://localhost:9080/attach/img/P0102/82335ef9-18d7-4509-b3d4-df57d8d50a48.jpg"
+           th:src="@{/api/attach/img/{attachCode}/{storeFilename}(attachCode=${imageFile.code},storeFilename=${imageFile.storeFilename})}"
+           alt="이미지를 불러올수 없습니다">
     </div>
   </div>
 </div>

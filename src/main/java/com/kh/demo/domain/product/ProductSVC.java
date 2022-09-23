@@ -13,8 +13,8 @@ public interface ProductSVC {
    */
   Long save(Product product);
   Long save(Product product, MultipartFile file);
-  Long save(Product product, MultipartFile file, List<MultipartFile> files);
   Long save(Product product, List<MultipartFile> files);
+  Long save(Product product, MultipartFile file, List<MultipartFile> files);
 
   /**
    * 상품목록
@@ -35,6 +35,9 @@ public interface ProductSVC {
    * @return
    */
   int update(Long productId, Product product);
+  int update(Long productId, Product product, MultipartFile file);
+  int update(Long productId, Product product, List<MultipartFile> files);
+  int update(Long productId, Product product, MultipartFile file, List<MultipartFile> files);
 
   /**
    * 상품삭제
